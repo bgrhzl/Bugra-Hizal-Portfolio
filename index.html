@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bugra Hizal | Portfolio</title>
+    <meta
+      name="description"
+      content="A professional portfolio website presenting Bugra Hizal's resume, projects, and technical expertise."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+    <div class="bg-grid"></div>
+
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#hero">BH</a>
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <button id="themeToggle" class="btn ghost" aria-label="Toggle theme">Theme</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="hero" class="section hero reveal">
+        <div>
+          <p class="eyebrow">MCP-Ready Professional Portfolio</p>
+          <h1 id="fullName">Bugra Hizal</h1>
+          <p id="title" class="title">Full Stack Developer & AI Integration Specialist</p>
+          <p id="summary" class="summary"></p>
+          <div class="actions">
+            <a id="cvLink" class="btn" href="#resume">View Resume</a>
+            <a id="contactLink" class="btn ghost" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+        <aside class="card stats reveal delay-1">
+          <h2>Quick Overview</h2>
+          <ul id="quickStats"></ul>
+        </aside>
+      </section>
+
+      <section id="about" class="section reveal">
+        <h2>About Me</h2>
+        <p id="aboutText"></p>
+        <div class="pill-row" id="highlights"></div>
+      </section>
+
+      <section id="resume" class="section grid-two reveal">
+        <article class="column-card">
+          <h2>Experience</h2>
+          <div class="timeline" id="experienceList"></div>
+        </article>
+        <article class="column-card">
+          <h2>Education & Certifications</h2>
+          <div class="timeline" id="educationList"></div>
+        </article>
+      </section>
+
+      <section id="projects" class="section reveal">
+        <h2>Featured Projects</h2>
+        <p class="muted">
+          Projects are prioritized based on business impact and user value. MCP-powered integrations are explicitly
+          highlighted.
+        </p>
+        <div id="projectGrid" class="project-grid"></div>
+      </section>
+
+      <section id="skills" class="section reveal">
+        <h2>Skill Set</h2>
+        <div class="skills-layout">
+          <div class="column-card">
+            <h3>Technical Skills</h3>
+            <ul id="techSkills" class="tag-list"></ul>
+          </div>
+          <div class="column-card">
+            <h3>Professional Skills</h3>
+            <ul id="softSkills" class="tag-list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact reveal">
+        <h2>Contact</h2>
+        <p>I am open to collaboration, consulting opportunities, and high-impact product roles.</p>
+        <div id="contactMethods" class="contact-links"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© <span id="year"></span> <span id="footerName">Bugra Hizal</span>. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
