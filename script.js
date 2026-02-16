@@ -11,7 +11,7 @@ function createBulletList(items = []) {
 
 function createTimelineItem(item) {
   const element = document.createElement('article');
-  element.className = 'timeline-item';
+  element.className = 'timeline-item interactive-card';
   element.innerHTML = `
     <h3>${item.role}</h3>
     <p class="timeline-meta">${item.company} • ${item.period}</p>
@@ -23,7 +23,7 @@ function createTimelineItem(item) {
 
 function createProjectCard(project) {
   const card = document.createElement('article');
-  card.className = 'project-card';
+  card.className = 'project-card interactive-card';
 
   const badges = project.tags
     .map((tag) => `<span class="badge ${tag === 'MCP' ? 'mcp' : ''}">${tag}</span>`)
@@ -104,6 +104,11 @@ function setupThemeToggle() {
 }
 
 function setupRevealAnimations() {
+  const revealItems = [...document.querySelectorAll('.reveal')];
+  revealItems.forEach((item, index) => {
+    item.style.transitionDelay = `${Math.min(index * 60, 260)}ms`;
+  });
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -113,12 +118,54 @@ function setupRevealAnimations() {
         }
       });
     },
-    { threshold: 0.16 }
+    { threshold: 0.18 }
   );
 
-  document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
+  revealItems.forEach((item) => observer.observe(item));
 }
+
+function setupScrollProgress() {
+  const progress = $('#scrollProgress');
+  if (!progress) {
+    return;
+  }
+
+  const update = () => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+    progress.style.width = `${ratio}%`;
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+function setupInteractiveCards() {
+  const cards = document.querySelectorAll('.interactive-card');
+
+  cards.forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+
+      const rotateY = (x - 0.5) * 6;
+      const rotateX = (0.5 - y) * 6;
+
+      card.style.setProperty('--rx', `${rotateY.toFixed(2)}deg`);
+      card.style.setProperty('--ry', `${rotateX.toFixed(2)}deg`);
+    });
+
+    card.addEventListener('pointerleave', () => {
+      card.style.setProperty('--rx', '0deg');
+      card.style.setProperty('--ry', '0deg');
+    });
+  });
+}
+
 
 mountPortfolio(portfolioData);
 setupThemeToggle();
 setupRevealAnimations();
+setupScrollProgress();
+setupInteractiveCards();

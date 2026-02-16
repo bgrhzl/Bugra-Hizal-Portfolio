@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div id="scrollProgress" class="scroll-progress"></div>
     <div class="bg-orb orb-one"></div>
     <div class="bg-orb orb-two"></div>
     <div class="bg-grid"></div>
@@ -42,7 +43,7 @@
         <div>
           <p class="eyebrow">MCP-Ready Professional Portfolio</p>
           <h1 id="fullName">Bugra Hizal</h1>
-          <p id="title" class="title">Full Stack Developer & AI Integration Specialist</p>
+          <p id="title" class="title">Software Engineer | Full-Stack & Automation</p>
           <p id="summary" class="summary"></p>
           <div class="actions">
             <a id="cvLink" class="btn" href="#resume">View Resume</a>
@@ -53,6 +54,38 @@
           <h2>Quick Overview</h2>
           <ul id="quickStats"></ul>
         </aside>
+      </section>
+
+
+
+      <section id="showcase" class="section reveal">
+        <h2>Interactive 3D Showcase</h2>
+        <p class="muted">Powered by Three.js: scroll down to open the 3D laptop model and reveal live profile highlights.</p>
+        <div class="three-stage" id="laptopStage">
+          <canvas id="threeCanvas" aria-label="3D laptop showcase"></canvas>
+          <div class="three-overlay">
+            <pre id="laptopTerminal" class="terminal-text"></pre>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section id="scene-gallery" class="section reveal">
+        <h2>3D Experience Gallery</h2>
+        <p class="muted">Additional real-time 3D scenes to highlight engineering depth and create stronger visual engagement.</p>
+        <div class="scene-grid">
+          <article class="scene-card">
+            <h3>Data Core</h3>
+            <p class="muted">A rotating procedural core representing backend architecture and data pipelines.</p>
+            <canvas class="scene-canvas" id="coreCanvas" aria-label="3D data core scene"></canvas>
+          </article>
+          <article class="scene-card">
+            <h3>Global Network</h3>
+            <p class="muted">An animated network sphere symbolizing distributed systems and API connectivity.</p>
+            <canvas class="scene-canvas" id="networkCanvas" aria-label="3D global network scene"></canvas>
+          </article>
+        </div>
       </section>
 
       <section id="about" class="section reveal">
@@ -110,5 +143,6 @@
 
     <script src="data.js"></script>
     <script src="script.js"></script>
+    <script type="module" src="three-scene.js"></script>
   </body>
 </html>
