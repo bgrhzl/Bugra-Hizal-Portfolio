@@ -343,6 +343,19 @@ h1 {
   border-color: color-mix(in srgb, var(--primary) 65%, white);
 }
 
+
+.detail-list {
+  margin: 0.55rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.detail-list li {
+  line-height: 1.5;
+}
+
 .badges {
   display: flex;
   flex-wrap: wrap;

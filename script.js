@@ -1,5 +1,14 @@
 const $ = (selector) => document.querySelector(selector);
 
+function createBulletList(items = []) {
+  if (!items.length) {
+    return '';
+  }
+
+  const listItems = items.map((item) => `<li>${item}</li>`).join('');
+  return `<ul class="detail-list">${listItems}</ul>`;
+}
+
 function createTimelineItem(item) {
   const element = document.createElement('article');
   element.className = 'timeline-item';
@@ -7,6 +16,7 @@ function createTimelineItem(item) {
     <h3>${item.role}</h3>
     <p class="timeline-meta">${item.company} • ${item.period}</p>
     <p>${item.description}</p>
+    ${createBulletList(item.achievements)}
   `;
   return element;
 }
@@ -22,6 +32,7 @@ function createProjectCard(project) {
   card.innerHTML = `
     <h3>${project.name}</h3>
     <p>${project.description}</p>
+    ${createBulletList(project.whatIDid)}
     <div class="badges">
       ${badges}
       ${project.mcp ? '<span class="badge mcp">MCP Compatible</span>' : ''}
@@ -107,7 +118,6 @@ function setupRevealAnimations() {
 
   document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
 }
-
 
 mountPortfolio(portfolioData);
 setupThemeToggle();
